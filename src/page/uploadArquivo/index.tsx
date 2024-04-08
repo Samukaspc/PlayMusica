@@ -2,19 +2,17 @@ import { ButtonBox, ContainerBox, ContainerH1, DropzoneContainer } from "./style
 import { useCallback } from 'react';
 import { Alert, Button, message } from "antd";
 import { FileRejection, useDropzone } from "react-dropzone";
-
+import { useNavigate } from "react-router-dom";
 
 export default function UploadArquivo() {
-  const handleDrop = useCallback((acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
-    console.log(acceptedFiles);
-    console.log(rejectedFiles);
-    const audioFiles = acceptedFiles.filter(file => file.type.startsWith('audio/'));
+  const navigate = useNavigate();
 
+  const handleDrop = useCallback((acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
+    const audioFiles = acceptedFiles.filter(file => file.type.startsWith('audio/'));
 
     if (audioFiles.length > 0) {
       message.success('Arquivo de áudio aceito com sucesso!');
-      //TODO: para mudar de pagina
-      window.location.href = '/EdicaoArquivo';
+      navigate('/EdicaoArquivo', { state: { audioFiles } });
     } else {
       message.error('Arquivo inválido! Por favor, selecione um arquivo de áudio.');
     }
@@ -25,7 +23,7 @@ export default function UploadArquivo() {
         alert(`Erro ao processar o arquivo ${rejectedFile.file.name}: ${rejectedFile.errors[0].message}`);
       });
     }
-  }, []);
+  }, [navigate]);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: handleDrop,
