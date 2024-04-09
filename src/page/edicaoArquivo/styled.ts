@@ -27,7 +27,7 @@ export const ContainerBox = styled.div`
     background-color: aliceblue;
     opacity: 0.5;
 `
-export const ButtonBox = styled.div`
+export const BoxCenter = styled.div`
     display: flex;
     gap: 10px;
     align-items: center;
@@ -74,7 +74,16 @@ export const ContainerBoxButton = styled.div`
     flex-direction: column;
     margin-top: 10px;
     `
-export const Box = styled.div`
+export const BoxEsquerda = styled.div`
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    button {
+        height: 50px;
+    }
+`
+export const BoxDireita = styled.div`
+    width: 50%;
     display: flex;
     flex-direction: column;
     button {
