@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@types/dropzone": "^5.7.8",
+    "@types/jszip": "^3.4.1",
     "@types/react-router-dom": "^5.3.3",
     "antd": "^5.16.1",
     "express": "^4.19.2",
@@ -24,6 +25,7 @@
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",

@@ -11,11 +11,13 @@ import ArquivoEsquerda from "./arquivoEsquerda";
 import ResultadoArquivo from "./resultadoArquivo";
 import { useState } from "react";
 import SepararArquivo from "../../functios";
+import { message } from "antd";
 
 export default function EdicaoArquivo() {
   const [quantidade, setQuantidade] = useState<number>(0);
   const [arquivoEsquerdaDados, setArquivoEsquerdaDados] = useState<File[]>([]);
   const [arquivoDireitaDados, setArquivoDireitaDados] = useState<File[]>([]);
+  const [resultadoDados, setResultadoDados] = useState<File[]>([]);
   const arquivoEsquerda = async (arquivoEsquerda: File[]) => {
     setArquivoEsquerdaDados(arquivoEsquerda);
   };
@@ -28,7 +30,18 @@ export default function EdicaoArquivo() {
 
   const separarDados = async (separarDados: boolean) => {
     if (!separarDados) {
-      SepararArquivo(arquivoEsquerdaDados, quantidade, arquivoDireitaDados);
+      try {
+        const resultado = await SepararArquivo(
+          arquivoEsquerdaDados,
+          quantidade,
+          arquivoDireitaDados
+        );
+        setResultadoDados(resultado);
+        console.log("A função foi executada com sucesso no Componente.");
+      } catch (error) {
+        message.error((error as Error).message);
+        console.error("Erro no Componente:", (error as Error).message);
+      }
     }
   };
 
@@ -46,7 +59,10 @@ export default function EdicaoArquivo() {
           <ArquivoDireita arquivoDireita={arquivoDireita} />
         </BoxDireita>
         <BoxDireita>
-          <ResultadoArquivo separarDados={separarDados} />
+          <ResultadoArquivo
+            resultadoDados={resultadoDados}
+            separarDados={separarDados}
+          />
         </BoxDireita>
       </ContainerBoxArquivo>
     </Container>
