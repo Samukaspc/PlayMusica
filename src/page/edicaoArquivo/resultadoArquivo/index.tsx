@@ -29,6 +29,7 @@ export default function ResultadoArquivo({
     link.setAttribute("download", "musicas.zip");
     document.body.appendChild(link);
     link.click();
+    setResultado([]);
   };
 
   return (

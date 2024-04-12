@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const animateBackground = keyframes`
+export const animateBackground = keyframes`
   0% {
     background-position: 0% 50%;
   }
@@ -20,7 +20,9 @@ export const Container = styled.div`
   height: 100vh;
   width: 100%;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 100% 100%;
+  background-size: 400% 400%;
   animation: ${animateBackground} 10s ease infinite;
- 
+
+  position: relative;
+  z-index: 0;
 `;
