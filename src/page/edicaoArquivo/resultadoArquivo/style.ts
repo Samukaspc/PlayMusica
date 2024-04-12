@@ -15,7 +15,7 @@ export const ContainerBox = styled.div`
 export const ContainerBoxButton = styled.div`
   display: flex;
   gap: 10px;
-  flex-direction: column;
+  justify-content: center;
   margin-top: 10px;
 `;
 

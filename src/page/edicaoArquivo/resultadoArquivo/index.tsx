@@ -58,10 +58,7 @@ export default function ResultadoArquivo({
         >
           Baixar Arquivo
         </Button>
-        <Button
-          style={{ backgroundColor: "yellow" }}
-          onClick={() => setResultado([])}
-        >
+        <Button type="primary" onClick={() => setResultado([])}>
           Limpar
         </Button>
       </ContainerBoxButton>

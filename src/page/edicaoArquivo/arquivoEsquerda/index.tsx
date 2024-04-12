@@ -92,6 +92,9 @@ export default function ArquivoEsquerda({ arquivoEsquerda }: ArquivoPropsType) {
         >
           Remover
         </Button>
+        <Button type="primary" onClick={() => setAudioFiles([])}>
+          Limpar
+        </Button>
       </ContainerBoxButton>
     </>
   );

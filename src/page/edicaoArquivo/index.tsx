@@ -47,7 +47,6 @@ export default function EdicaoArquivo() {
 
   return (
     <Container>
-      <h1>Separar Arquivo(s)</h1>
       <ContainerBoxArquivo>
         <BoxEsquerda>
           <ArquivoEsquerda arquivoEsquerda={arquivoEsquerda} />
