@@ -58,10 +58,15 @@ export default function ArquivoEsquerda({ arquivoEsquerda }: ArquivoPropsType) {
       arquivoEsquerda(location.state.audioFiles);
     }
   }, [location.state?.audioFiles, arquivoEsquerda]);
+
+  const sortedAudioFiles = audioFiles.slice().sort((a, b) => {
+    return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+  });
+
   return (
     <>
       <ContainerBox>
-        {audioFiles.map((file: any, index: number) => (
+        {sortedAudioFiles.map((file: any, index: number) => (
           <BoxMusica
             key={index}
             onClick={() => {
