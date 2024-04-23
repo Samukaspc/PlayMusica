@@ -52,8 +52,9 @@ export default function ArquivoDireita({ arquivoDireita }: ArquivoPropsType) {
 
   return (
     <>
-      <ContainerBox>
+      <ContainerBox {...getRootProps()}>
         {audioFiles.map((file: any, index: number) => (
+          <div key={index} onClick={(e) => e.stopPropagation()}>
           <BoxMusica
             key={index}
             onClick={() => {
@@ -68,8 +69,9 @@ export default function ArquivoDireita({ arquivoDireita }: ArquivoPropsType) {
               controls
               width="100%"
               height="50px"
-            />
+              />
           </BoxMusica>
+              </div>
         ))}
       </ContainerBox>
       <ContainerBoxButton>

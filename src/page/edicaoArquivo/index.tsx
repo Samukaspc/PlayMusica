@@ -46,9 +46,9 @@ export default function EdicaoArquivo() {
   };
 
   return (
-    <Container>
+    <Container>     
       <ContainerBoxArquivo>
-        <BoxEsquerda>
+        <BoxEsquerda >
           <ArquivoEsquerda arquivoEsquerda={arquivoEsquerda} />
         </BoxEsquerda>
         <BoxCenter>

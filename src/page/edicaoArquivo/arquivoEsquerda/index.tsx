@@ -52,7 +52,6 @@ export default function ArquivoEsquerda({ arquivoEsquerda }: ArquivoPropsType) {
     },
     multiple: true,
   });
-
   useEffect(() => {
     if (location.state?.audioFiles) {
       arquivoEsquerda(location.state.audioFiles);
@@ -65,26 +64,28 @@ export default function ArquivoEsquerda({ arquivoEsquerda }: ArquivoPropsType) {
 
   return (
     <>
-      <ContainerBox>
+      <ContainerBox {...getRootProps()}>
         {sortedAudioFiles.map((file: any, index: number) => (
-          <BoxMusica
-            key={index}
-            onClick={() => {
-              setRemoverArquivoTela(file);
-              setSelectedItemIndex(index);
-            }}
-            selected={selectedItemIndex === index}
-          >
-            <span>{file.name}</span>
-            <ReactPlayer
-              url={URL.createObjectURL(file)}
-              controls
-              width="100%"
-              height="50px"
-            />
-          </BoxMusica>
+          <div key={index} onClick={(e) => e.stopPropagation()}>
+            <BoxMusica
+              onClick={() => {
+                setRemoverArquivoTela(file);
+                setSelectedItemIndex(index);
+              }}
+              selected={selectedItemIndex === index}
+            >
+              <span>{file.name}</span>
+              <ReactPlayer
+                url={URL.createObjectURL(file)}
+                controls
+                width="100%"
+                height="50px"
+              />
+            </BoxMusica>
+          </div>
         ))}
       </ContainerBox>
+
       <ContainerBoxButton>
         <Button {...getRootProps()} type="primary">
           Adicionar
