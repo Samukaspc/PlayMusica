@@ -21,18 +21,18 @@ export default function SepararArquivo(
       arquivoEsquerdaDados.length - 1
     );
 
-    const nomeBaseDireita = obterNomeBase(
-      arquivoEsquerdaDados[indiceUltimoEsquerda].name
-    );
-
     for (let j = i; j <= indiceUltimoEsquerda; j++) {
-      resultado.push(arquivoEsquerdaDados[j]);
+      const arquivoEsquerda = arquivoEsquerdaDados[j];
+      const nomeSemExtensao = obterNomeBase(arquivoEsquerda.name);
+      const nomeArquivoEsquerda = `${nomeSemExtensao}.mp3`;
+      resultado.push(new File([arquivoEsquerda], nomeArquivoEsquerda));
     }
 
+    const ultimoNomeBaseEsquerda = obterNomeBase(arquivoEsquerdaDados[indiceUltimoEsquerda].name);
+    const nomeDireitaPadrao = `${ultimoNomeBaseEsquerda}_1.mp3`;
+
     for (let k = 0; k < arquivoDireitaDados.length; k++) {
-      const extensaoDireita = arquivoDireitaDados[k].name.split(".").pop();
-      const nomeDireita = `${nomeBaseDireita}_${k + 1}.${extensaoDireita}`;
-      resultado.push(new File([arquivoDireitaDados[k]], nomeDireita));
+      resultado.push(new File([arquivoDireitaDados[k]], nomeDireitaPadrao));
     }
   }
 
@@ -41,6 +41,6 @@ export default function SepararArquivo(
 }
 
 function obterNomeBase(nomeArquivo: string): string {
-  const nomeSemExtensao = nomeArquivo.replace(/\.[^/.]+$/, "");
-  return nomeSemExtensao.replace(/^\d+/, "");
+  // Remover números do início do nome do arquivo e extensão duplicada
+  return nomeArquivo.replace(/^\d+/, "").replace(/\.mp3$/, "");
 }
